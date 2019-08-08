@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dodgeball</title>
+    <link rel="icon" href="img/ball.png" type="image/png">
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <link rel="prefetch" href="img/boy_left.png">
+    <link rel="prefetch" href="img/boy_up.png">
+    <link rel="prefetch" href="img/boy_right.png">
+    <link rel="prefetch" href="img/boy_down.png">
+    <link rel="prefetch" href="img/girl_left.png">
+    <link rel="prefetch" href="img/girl_up.png">
+    <link rel="prefetch" href="img/girl_right.png">
+    <link rel="prefetch" href="img/girl_down.png">
+    <link rel="prefetch" href="img/dog_left.png">
+    <link rel="prefetch" href="img/dog_up.png">
+    <link rel="prefetch" href="img/dog_right.png">
+    <link rel="prefetch" href="img/dog_down.png">
+    <link rel="prefetch" href="img/ball.png">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div id="playingAreaPanel">
+        <div id="playingArea"></div>
+    </div>
+
+    <div id="sidePanel">
+        <div id="playerPanel">
+            <div class="panelTitle">Players</div>
+
+            <div id="playerList"></div>
+        </div>
+
+        <div id="joinPanel">
+            <div class="panelTitle">Join Dodgeball</div>
+
+            <input id="nameInput" type="text" placeholder="Type your name">
+
+            <div id="genderInput">
+                <input id="boyInput" type="radio" name="gender" value="boy" checked>
+                <label for="boyInput">Boy</label>
+                <input id="girlInput" type="radio" name="gender" value="girl">
+                <label for="girlInput">Girl</label>
+            </div>
+
+            <button id="joinButton">Join Game</button>
+        </div>
+    </div>
+
+    <p>
+        Learn how to make this game at <a href="https://www.mrcodeswildride.com" target="_blank">mrcodeswildride.com</a>
+    </p>
+
+    <script type="text/javascript" src="client.js"></script>
+</body>
+
+</html>
