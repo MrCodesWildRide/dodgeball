@@ -1,0 +1,178 @@
+body {
+  overflow: hidden;
+}
+
+#playingAreaPanel,
+#sidePanel {
+  display: inline-block;
+  vertical-align: top;
+  border: 1px solid black;
+}
+
+#playingAreaPanel {
+  padding: 2px 18px 18px;
+}
+
+#playingArea {
+  width: 648px;
+  height: 384px;
+  position: relative;
+}
+
+.player {
+  width: 36px;
+  height: 48px;
+  background-size: 36px 48px;
+  position: absolute;
+}
+
+.boy.left {
+  background-image: url("img/boy-left.png");
+}
+
+.boy.up {
+  background-image: url("img/boy-up.png");
+}
+
+.boy.right {
+  background-image: url("img/boy-right.png");
+}
+
+.boy.down {
+  background-image: url("img/boy-down.png");
+}
+
+.girl.left {
+  background-image: url("img/girl-left.png");
+}
+
+.girl.up {
+  background-image: url("img/girl-up.png");
+}
+
+.girl.right {
+  background-image: url("img/girl-right.png");
+}
+
+.girl.down {
+  background-image: url("img/girl-down.png");
+}
+
+.dog.left {
+  background-image: url("img/dog-left.png");
+}
+
+.dog.up {
+  background-image: url("img/dog-up.png");
+}
+
+.dog.right {
+  background-image: url("img/dog-right.png");
+}
+
+.dog.down {
+  background-image: url("img/dog-down.png");
+}
+
+.playerName {
+  max-width: 60px;
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.me {
+  color: blue;
+}
+
+.ball {
+  width: 32px;
+  height: 32px;
+  background-image: url("img/ball.png");
+  background-size: 32px 32px;
+  position: absolute;
+}
+
+#playerPanel,
+#joinPanel {
+  width: 160px;
+  padding: 15px;
+}
+
+#playerPanel {
+  height: 204px;
+}
+
+#joinPanel {
+  height: 139px;
+  border-top: 1px solid black;
+}
+
+.panelTitle {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#playerList {
+  height: 173px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.playerRow {
+  margin-bottom: 4px;
+}
+
+.playerRowName,
+.playerRowPoints {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.playerRowName {
+  width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.playerRowPoints {
+  width: 40%;
+  text-align: right;
+}
+
+#nameInput {
+  width: 146px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+#genderInput {
+  margin-top: 10px;
+}
+
+#boyInput,
+#girlInput,
+label {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#girlInput {
+  margin-left: 18px;
+}
+
+label {
+  user-select: none;
+}
+
+#joinButton {
+  width: 100%;
+  font-weight: bold;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.instructions {
+  font-size: 20px;
+}
