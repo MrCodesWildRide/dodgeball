@@ -164,6 +164,10 @@ module.exports.throw = function(playerId) {
         direction: player.facing
       }
 
+      if (player.boundaries == `off`) {
+        balls[ballId].boundaries = `off`
+      }
+
       // set the time that the player threw the ball
       playersThrowingBalls[playerId] = Date.now()
     }
@@ -203,6 +207,10 @@ module.exports.throw4 = function(playerId) {
           leftValue: leftValue,
           topValue: topValue,
           direction: direction
+        }
+
+        if (player.boundaries == `off`) {
+          balls[ballId].boundaries = `off`
         }
 
         playersThrowingBalls[playerId] = Date.now()
@@ -284,7 +292,7 @@ function handleBalls() {
         ball.leftValue = leftValue
         ball.topValue = topValue
       }
-      else if (players[ball.thrower] != null && players[ball.thrower].boundaries == `off` && inExtendedPlayingArea(leftValue, topValue)) {
+      else if (ball.boundaries == `off` && inExtendedPlayingArea(leftValue, topValue)) {
         ball.leftValue = leftValue
         ball.topValue = topValue
       }
