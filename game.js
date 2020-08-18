@@ -46,7 +46,7 @@ module.exports.getData = function() {
 }
 
 // adds a new player to the game and returns the new player ID
-module.exports.join = function(name, gender, theme, boundaries) {
+module.exports.join = function(name, gender, options) {
   // remove leading and trailing spaces from the player's name and gender
   name = name == null ? `` : name.trim()
   gender = gender == null ? `` : gender.trim()
@@ -71,11 +71,11 @@ module.exports.join = function(name, gender, theme, boundaries) {
       lastPing: Date.now()
     }
 
-    if (theme == `rainbow`) {
+    if (options.theme == `rainbow`) {
       players[playerId].theme = `rainbow`
     }
 
-    if (boundaries == `off`) {
+    if (options.boundaries == `off`) {
       players[playerId].boundaries = `off`
     }
 

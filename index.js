@@ -45,7 +45,7 @@ app.get(`/data`, (request, response) => {
 
 // route to join the game
 app.post(`/join`, (request, response) => {
-  let playerId = game.join(request.body.name, request.body.gender, request.body.theme, request.body.boundaries)
+  let playerId = game.join(request.body.name, request.body.gender, request.body)
 
   response.send(playerId)
 })
