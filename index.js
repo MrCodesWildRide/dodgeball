@@ -18,7 +18,7 @@ profanity.setOptions({
 app.use(profanity.init)
 
 // start the app
-let server = app.listen(3001)
+let server = app.listen(3012)
 let io = socketio.listen(server)
 
 io.on(`connection`, socket => {
