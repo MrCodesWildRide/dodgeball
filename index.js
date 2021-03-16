@@ -1,5 +1,4 @@
 let express = require(`express`)
-let bodyParser = require(`body-parser`)
 let socketio = require(`socket.io`)
 let profanity = require(`profanity-middleware`)
 let game = require(`./game`)
@@ -9,7 +8,7 @@ let app = express()
 app.use(express.static(`public`))
 
 // enable receiving JSON data
-app.use(bodyParser.json())
+app.use(express.json())
 
 // filter bad words for all routes
 profanity.setOptions({
