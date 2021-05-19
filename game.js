@@ -24,7 +24,7 @@ setInterval(() => {
 }, 50)
 
 // sets the last ping time of a player
-module.exports.setPingTime = function(playerId) {
+module.exports.setPingTime = playerId => {
   // get player from the player dictionary
   let player = players[playerId]
 
@@ -35,18 +35,18 @@ module.exports.setPingTime = function(playerId) {
 }
 
 // returns the game data
-module.exports.getData = function() {
+module.exports.getData = () => {
   // create the data that will be sent back to the client
   let data = {
     players: players,
-    balls: balls
+    balls: balls,
   }
 
   return data
 }
 
 // adds a new player to the game and returns the new player ID
-module.exports.join = function(name, gender, options) {
+module.exports.join = (name, gender, options) => {
   // remove leading and trailing spaces from the player's name and gender
   name = name == null ? `` : name.trim()
   gender = gender == null ? `` : gender.trim()
@@ -54,8 +54,7 @@ module.exports.join = function(name, gender, options) {
   if (name == ``) {
     // name was left blank, so return -1 to indicate that the player has not joined
     return String(-1)
-  }
-  else {
+  } else {
     // generate a new player ID
     numPlayers++
     let playerId = numPlayers
@@ -68,15 +67,15 @@ module.exports.join = function(name, gender, options) {
       leftValue: Math.floor(Math.random() * squaresAcross) * playerWidth,
       topValue: Math.floor(Math.random() * squaresDown) * playerHeight,
       facing: directions[Math.floor(Math.random() * directions.length)],
-      lastPing: Date.now()
-    }
-
-    if (options.theme == `rainbow`) {
-      players[playerId].theme = `rainbow`
+      lastPing: Date.now(),
     }
 
     if (options.boundaries == `off`) {
       players[playerId].boundaries = `off`
+    }
+
+    if (options.theme == `rainbow`) {
+      players[playerId].theme = `rainbow`
     }
 
     // return the new player ID so that the client knows which player is theirs
@@ -85,7 +84,7 @@ module.exports.join = function(name, gender, options) {
 }
 
 // changes a player's position and orientation
-module.exports.move = function(playerId, direction) {
+module.exports.move = (playerId, direction) => {
   // get player from the player dictionary
   let player = players[playerId]
 
@@ -99,16 +98,13 @@ module.exports.move = function(playerId, direction) {
     if (direction == `left`) {
       leftValue -= playerWidth
       facing = `left`
-    }
-    else if (direction == `up`) {
+    } else if (direction == `up`) {
       topValue -= playerHeight
       facing = `up`
-    }
-    else if (direction == `right`) {
+    } else if (direction == `right`) {
       leftValue += playerWidth
       facing = `right`
-    }
-    else if (direction == `down`) {
+    } else if (direction == `down`) {
       topValue += playerHeight
       facing = `down`
     }
@@ -127,7 +123,7 @@ module.exports.move = function(playerId, direction) {
 }
 
 // creates a new ball for a specified player
-module.exports.throw = function(playerId) {
+module.exports.throw = playerId => {
   // get player from the player dictionary
   let player = players[playerId]
 
@@ -139,14 +135,11 @@ module.exports.throw = function(playerId) {
     // set the new ball's position based on the player's orientation
     if (player.facing == `left`) {
       leftValue -= playerWidth
-    }
-    else if (player.facing == `up`) {
+    } else if (player.facing == `up`) {
       topValue -= playerHeight
-    }
-    else if (player.facing == `right`) {
+    } else if (player.facing == `right`) {
       leftValue += playerWidth
-    }
-    else if (player.facing == `down`) {
+    } else if (player.facing == `down`) {
       topValue += playerHeight
     }
 
@@ -161,7 +154,7 @@ module.exports.throw = function(playerId) {
         thrower: playerId,
         leftValue: leftValue,
         topValue: topValue,
-        direction: player.facing
+        direction: player.facing,
       }
 
       if (player.boundaries == `off`) {
@@ -177,7 +170,7 @@ module.exports.throw = function(playerId) {
   }
 }
 
-module.exports.throw4 = function(playerId) {
+module.exports.throw4 = playerId => {
   let player = players[playerId]
 
   if (player != null && playersThrowingBalls[playerId] == null) {
@@ -187,14 +180,11 @@ module.exports.throw4 = function(playerId) {
 
       if (direction == `left`) {
         leftValue -= playerWidth
-      }
-      else if (direction == `up`) {
+      } else if (direction == `up`) {
         topValue -= playerHeight
-      }
-      else if (direction == `right`) {
+      } else if (direction == `right`) {
         leftValue += playerWidth
-      }
-      else if (direction == `down`) {
+      } else if (direction == `down`) {
         topValue += playerHeight
       }
 
@@ -206,7 +196,7 @@ module.exports.throw4 = function(playerId) {
           thrower: playerId,
           leftValue: leftValue,
           topValue: topValue,
-          direction: direction
+          direction: direction,
         }
 
         if (player.boundaries == `off`) {
@@ -221,7 +211,7 @@ module.exports.throw4 = function(playerId) {
   }
 }
 
-module.exports.leave = function(playerId) {
+module.exports.leave = playerId => {
   delete players[playerId]
 }
 
@@ -270,19 +260,15 @@ function handleBalls() {
         // award a point to the thrower
         thrower.points++
       }
-    }
-    else {
+    } else {
       // set the new ball's position based on the balls's direction
       if (ball.direction == `left`) {
         leftValue -= playerWidth
-      }
-      else if (ball.direction == `up`) {
+      } else if (ball.direction == `up`) {
         topValue -= playerHeight
-      }
-      else if (ball.direction == `right`) {
+      } else if (ball.direction == `right`) {
         leftValue += playerWidth
-      }
-      else if (ball.direction == `down`) {
+      } else if (ball.direction == `down`) {
         topValue += playerHeight
       }
 
@@ -291,12 +277,10 @@ function handleBalls() {
         // set the ball's new position
         ball.leftValue = leftValue
         ball.topValue = topValue
-      }
-      else if (ball.boundaries == `off` && inExtendedPlayingArea(leftValue, topValue)) {
+      } else if (ball.boundaries == `off` && inExtendedPlayingArea(leftValue, topValue)) {
         ball.leftValue = leftValue
         ball.topValue = topValue
-      }
-      else {
+      } else {
         // remove ball from the ball dictionary
         delete balls[ballId]
       }
@@ -306,11 +290,18 @@ function handleBalls() {
 
 // helper function to check if a position is within the playing area
 function inPlayingArea(leftValue, topValue) {
-  return leftValue >= 0 && leftValue < playingAreaWidth && topValue >= 0 && topValue < playingAreaHeight
+  return (
+    leftValue >= 0 && leftValue < playingAreaWidth && topValue >= 0 && topValue < playingAreaHeight
+  )
 }
 
 function inExtendedPlayingArea(leftValue, topValue) {
-  return leftValue >= -1000 && leftValue < playingAreaWidth + 1000 && topValue >= -1000 && topValue < playingAreaHeight + 1000
+  return (
+    leftValue >= -1000 &&
+    leftValue < playingAreaWidth + 1000 &&
+    topValue >= -1000 &&
+    topValue < playingAreaHeight + 1000
+  )
 }
 
 // helper function to check if a position matches a player's position

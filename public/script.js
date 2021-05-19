@@ -28,33 +28,33 @@ socket.on(`data`, showData)
 function keyPressed(event) {
   // check if the user has joined the game
   if (playerId == null) {
-    if (event.keyCode == 13) { // enter
+    if (event.keyCode == 13) {
+      // enter
       joinGame()
     }
-  }
-  else {
-    if (event.keyCode == 32) { // space bar
+  } else {
+    if (event.keyCode == 32) {
+      // space bar
       throwBall()
-    }
-    else if (event.keyCode == 37) { // left arrow
+    } else if (event.keyCode == 37) {
+      // left arrow
       movePlayer(`left`)
-    }
-    else if (event.keyCode == 38) { // up arrow
+    } else if (event.keyCode == 38) {
+      // up arrow
       movePlayer(`up`)
-    }
-    else if (event.keyCode == 39) { // right arrow
+    } else if (event.keyCode == 39) {
+      // right arrow
       movePlayer(`right`)
-    }
-    else if (event.keyCode == 40) { // down arrow
+    } else if (event.keyCode == 40) {
+      // down arrow
       movePlayer(`down`)
-    }
-    else if (event.keyCode == 27) {
+    } else if (event.keyCode == 27) {
       let request = new XMLHttpRequest()
       request.open(`POST`, `/leave`)
       request.setRequestHeader(`Content-Type`, `application/json`)
 
       let requestBody = {
-        playerId: playerId
+        playerId: playerId,
       }
 
       request.send(JSON.stringify(requestBody))
@@ -81,7 +81,7 @@ function joinGame() {
   let requestBody = {
     name: name,
     gender: gender,
-    boundaries: `on`
+    boundaries: `on`,
   }
 
   // send the request to the server
@@ -116,7 +116,7 @@ function movePlayer(direction) {
   // create the request body that will be sent to the server
   let requestBody = {
     playerId: playerId,
-    direction: direction
+    direction: direction,
   }
 
   // send the request to the server
@@ -133,7 +133,7 @@ function throwBall() {
 
   // create the request body that will be sent to the server
   let requestBody = {
-    playerId: playerId
+    playerId: playerId,
   }
 
   // send the request to the server
@@ -146,7 +146,7 @@ function throwBall4() {
   request.setRequestHeader(`Content-Type`, `application/json`)
 
   let requestBody = {
-    playerId: playerId
+    playerId: playerId,
   }
 
   request.send(JSON.stringify(requestBody))
@@ -260,8 +260,7 @@ function updatePlayerList(players) {
 
         playerRowNameDiv.appendChild(span)
       }
-    }
-    else {
+    } else {
       playerRowNameDiv.innerText = player.name
     }
 
@@ -282,7 +281,7 @@ function updatePlayerList(players) {
 function ping() {
   // create the data that will be sent to the server
   let data = {
-    playerId: playerId
+    playerId: playerId,
   }
 
   // ping the server to let the server know that player is still connected

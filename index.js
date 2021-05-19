@@ -12,7 +12,7 @@ app.use(express.json())
 
 // filter bad words for all routes
 profanity.setOptions({
-  fullyMasked: true
+  fullyMasked: true,
 })
 app.use(profanity.init)
 

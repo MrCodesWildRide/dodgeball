@@ -1,59 +1,51 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Dodgeball</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.4" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="img/ball.png" rel="icon" />
+    <link href="img/boy-left.png" rel="prefetch" />
+    <link href="img/boy-up.png" rel="prefetch" />
+    <link href="img/boy-right.png" rel="prefetch" />
+    <link href="img/boy-down.png" rel="prefetch" />
+    <link href="img/girl-left.png" rel="prefetch" />
+    <link href="img/girl-up.png" rel="prefetch" />
+    <link href="img/girl-right.png" rel="prefetch" />
+    <link href="img/girl-down.png" rel="prefetch" />
+    <link href="img/dog-left.png" rel="prefetch" />
+    <link href="img/dog-up.png" rel="prefetch" />
+    <link href="img/dog-right.png" rel="prefetch" />
+    <link href="img/dog-down.png" rel="prefetch" />
+    <link href="img/ball.png" rel="prefetch" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js" defer></script>
+  </head>
 
-<head>
-	<title>Dodgeball</title>
-	<meta name="viewport" content="width=device-width, initial-scale=0.35">
-	<link href="style.css" rel="stylesheet">
-	<link href="img/ball.png" rel="icon">
-	<link href="img/boy-left.png" rel="prefetch">
-	<link href="img/boy-up.png" rel="prefetch">
-	<link href="img/boy-right.png" rel="prefetch">
-	<link href="img/boy-down.png" rel="prefetch">
-	<link href="img/girl-left.png" rel="prefetch">
-	<link href="img/girl-up.png" rel="prefetch">
-	<link href="img/girl-right.png" rel="prefetch">
-	<link href="img/girl-down.png" rel="prefetch">
-	<link href="img/dog-left.png" rel="prefetch">
-	<link href="img/dog-up.png" rel="prefetch">
-	<link href="img/dog-right.png" rel="prefetch">
-	<link href="img/dog-down.png" rel="prefetch">
-	<link href="img/ball.png" rel="prefetch">
-	<script src="/socket.io/socket.io.js">
+  <body>
+    <div id="playingAreaPanel">
+      <div id="playingArea"></div>
+    </div>
 
-	</script>
-	<script src="script.js" defer>
-
-	</script>
-</head>
-
-<body>
-	<div id="playingAreaPanel">
-		<div id="playingArea"></div>
-	</div>
-
-	<div id="sidePanel">
-		<div id="playerPanel">
-			<div class="panelTitle">Players</div>
-
-			<div id="playerList"></div>
-		</div>
-
-		<div id="joinPanel">
-			<div class="panelTitle">Join Dodgeball</div>
-
-			<input type="text" placeholder="type your name" autocomplete="off" id="nameInput">
-
-      <div id="genderInput">
-        <input type="radio" name="gender" value="boy" id="boyInput" checked>
-        <label for="boyInput">Boy</label>
-        <input type="radio" name="gender" value="girl" id="girlInput">
-        <label for="girlInput">Girl</label>
+    <div id="sidePanel">
+      <div id="playerPanel">
+        <div class="panelTitle">Players</div>
+        <div id="playerList"></div>
       </div>
 
-      <button id="joinButton">Join game</button>
-    </div>
-  </div>
-</body>
+      <div id="joinPanel">
+        <div class="panelTitle">Join Dodgeball</div>
+        <input type="text" placeholder="type your name" autocomplete="off" id="nameInput" />
 
+        <div id="genderInput">
+          <input type="radio" name="gender" value="boy" id="boyInput" checked />
+          <label for="boyInput">Boy</label>
+          <input type="radio" name="gender" value="girl" id="girlInput" />
+          <label for="girlInput">Girl</label>
+        </div>
+
+        <button id="joinButton">Join game</button>
+      </div>
+    </div>
+  </body>
 </html>
